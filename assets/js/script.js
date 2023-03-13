@@ -21,9 +21,11 @@
 //
 // TODO: Add code to display the current date in the header of the page.
 
-var timeDisplayEl = $('#currentDay')
+var timeDisplayEl = $('#currentDay');
 
 function displayTime() {
-  var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a')
-  timeDisplayEl.append(displayTime)
+  var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
+  timeDisplayEl.append(rightNow);
 }
+
+displayTime();
