@@ -22,10 +22,21 @@
 // TODO: Add code to display the current date in the header of the page.
 
 var timeDisplayEl = $('#currentDay');
+var saveCalEntry = $('saveBtn')
+var textEl = $('textarea').val()
 
 function displayTime() {
-  var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
-  timeDisplayEl.append(rightNow);
+  var rightNow = dayjs().format('MMM DD, YYYY [at] h:mm a');
+  timeDisplayEl.text(rightNow);
 }
-
 displayTime();
+
+
+function saveLocal() {
+  saveCalEntry.on('click', function () {
+    localStorage.setItem('calendarEntry', textEl);
+  })
+}
+saveLocal()
+
+
