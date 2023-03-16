@@ -10,7 +10,7 @@ function displayTime() {
   var rightNow = dayjs().format('MMM DD, YYYY [at] h:mm a');
   timeDisplayEl.text(rightNow);
 }
-displayTime();
+
 
 
 function saveLocal() {
@@ -20,7 +20,7 @@ function saveLocal() {
     localStorage.setItem(key, value);
   })
 }
-saveLocal()
+
 
 function loadLocal() {
   $('#hour-9 .description').val(localStorage.getItem('hour-9'))
@@ -33,7 +33,7 @@ function loadLocal() {
   $('#hour-16 .description').val(localStorage.getItem('hour-16'))
   $('#hour-17 .description').val(localStorage.getItem('hour-17'))
 }
-loadLocal()
+
 
 function colorCode() {
   $('.time-block').each(function () {
@@ -53,6 +53,13 @@ function colorCode() {
     }
   })
 }
-colorCode()
+
 
 setInterval(colorCode, 3600000)
+
+$(document).ready(function () {
+  colorCode(),
+    loadLocal(),
+    saveLocal(),
+    displayTime()
+});
