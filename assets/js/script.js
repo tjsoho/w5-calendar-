@@ -1,17 +1,14 @@
-//$(window).load(function () {
-
-//});
 
 var timeDisplayEl = $('#currentDay');
 var saveCalEntry = $('.saveBtn')
 
-
+// this function displays current day and time
 function displayTime() {
   var rightNow = dayjs().format('MMM DD, YYYY [at] h:mm a');
   timeDisplayEl.text(rightNow);
 }
 
-
+// saves user input to local storage 
 
 function saveLocal() {
   saveCalEntry.on('click', function () {
@@ -21,6 +18,7 @@ function saveLocal() {
   })
 }
 
+// function to load content from local storage to stay on the page after refresh
 
 function loadLocal() {
   $('#hour-9 .description').val(localStorage.getItem('hour-9'))
@@ -34,7 +32,7 @@ function loadLocal() {
   $('#hour-17 .description').val(localStorage.getItem('hour-17'))
 }
 
-
+// color code for past present future
 function colorCode() {
   $('.time-block').each(function () {
     const hour = parseInt($(this).attr('id').split('-')[1]);
@@ -53,10 +51,11 @@ function colorCode() {
     }
   })
 }
-
+// this makes sure the oage is updating with the time so that the color code is applied at the end of each hour
 
 setInterval(colorCode, 3600000)
 
+// this code tells the browser to load everything first and then run these functions after everything has loaded
 $(document).ready(function () {
   colorCode(),
     loadLocal(),
